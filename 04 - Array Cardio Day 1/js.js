@@ -125,7 +125,12 @@ console.log(oldest);
 //   .filter(streetName => streetName.includes('de'));
 // 7. sort Exercise
 // Sort the people alphabetically by last name
-
+const alpha = people.sort((lastOne, nextOne) => {
+  const parts = lastOne.split(', ');
+  const nextParts = nextOne.split(', ');
+  return parts[0] > nextParts[0];
+});
+console.log(alpha);
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = [
@@ -133,3 +138,12 @@ const data = [
   'walk', 'car', 'van', 'bike', 'walk',
   'car', 'van', 'car', 'truck',
 ];
+
+const transportation = data.reduce((obj, item) => {
+  if (!obj[item]) {
+    obj[item] = 0;
+  }
+  obj[item]++;
+  return obj;
+}, {});
+console.log(transportation);
